@@ -1,38 +1,4 @@
 ++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.
 <<+++++++++++++++.>.+++.------.--------.>+.>.
 
-anychain
-
-A Rust library for multi-chain cryptowallet, supporting transactions of crypto assets on many different
-public blockchains including Bitcoin, Ethereum, Tron, Filecoin, etc.
-
-
-Features
-
-	Common Traits when it comes to building transactions for different blockchains, they are
-		PublicKey
-		Address
-		Amount
-		Transaction
-		Network
-		Format
-
-	Common crates used in building transactions for different blockchains, they are
-		base58
-		secp256k1
-		hex
-		rand
-
-
-Functions
-	
-	Build raw unsigned transactions for different blockchains according to parameters taken from the user of this library
-
-	Build signed transactions for different blockchains by merging the raw transaction and the corresponding signature
-	taken from the user of this library
-
-
-Build the source
-
-	cargo build --release
-
+0200000002fc9c49b585f9e368595a3ddb377f3b27c25de8863961ea18f60512f4ef2e78fd010000006b483045022100a6f1887d84269290b60daca020df6131150059046b629928534788aa78bd8e6602200ca7573cc74bc01ee426575399731d926ba33d0faa6a028ea74412ae0bb71d65012103b7f0bd964888f4dfda6ec11a7fcca9b5166dbea25677604d3d45e2c01d8dfb47ffffffff8ba3f8c08f0f6c388dab993b8e6caba1abff13e51e901091c5896d86edcf2bba000000006b483045022100ba19c3e0a4dd67774241520937fce4ec7843b652520d611751c7d71629044495022067b36251a1a741e0fb278dbe1fdbbc07be4b71f4b449f844635b62f9c62d3c69012103b7f0bd964888f4dfda6ec11a7fcca9b5166dbea25677604d3d45e2c01d8dfb47ffffffff0320030000000000001976a914b426aa85490f967c64747a6783db51b76991fde688ac0000000000000000156a6f6d6e690000000000000001000000000016e36022020000000000001976a914b038a129f55d9a066db82508597a72794674115788ac00000000
