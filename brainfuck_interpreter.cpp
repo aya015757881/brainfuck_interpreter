@@ -1,13 +1,15 @@
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
+#define CODE_CAPACITY 65536
+#define DATA_CAPACITY 65536
 
 using namespace std;
 
 FILE *bfsrc;
 char src_name[256];
-char code_mem[65536], *code_ptr;
-unsigned char data_mem[65536], *data_ptr;
+char code_mem[CODE_CAPACITY], *code_ptr;
+unsigned char data_mem[DATA_CAPACITY], *data_ptr;
 void init_brainfuck();
 void read_and_parse_bf_code();
 void parse_bf_code();
@@ -40,17 +42,18 @@ int main(int argc, char *argv[])
 
 void init_brainfuck()
 {
-    for (int i = 0; i < 65536; ++i) {
-        data_mem[i] = 0;
+    for (int i = 0; i < CODE_CAPACITY; ++i)
         code_mem[i] = 0;
-    }
+
+    for (int i = 0; i < DATA_CAPACITY; ++i)
+        data_mem[i] = 0;
 
     data_ptr = data_mem;
 }
 
 void read_and_parse_bf_code()
 {
-    int i = 0;
+    int i = 0, cnt = 0;
     char c;
 
     while (1) {
@@ -69,7 +72,10 @@ void read_and_parse_bf_code()
         case '[':
         case ']':
             code_mem[i++] = c;
-            break;
+            if (++cnt > CODE_CAPACITY) {
+                cout << "Brainfuck program larger than %d bytes not supported by this interpreter";
+                exit(0);
+            };
         }
     }
 
@@ -91,7 +97,7 @@ void parse_bf_code()
     while (*code_ptr) {
         switch (*code_ptr) {
         case '>':
-            if (++data_ptr - data_mem >= 65536) {
+            if (++data_ptr - data_mem >= DATA_CAPACITY) {
                 printf("Brainfuck out of its memory at %ld on symbol %c.\n\n", data_ptr - data_mem, *code_ptr);
                 print_bf_code_until_code_ptr();
                 print_bf_data();
@@ -182,7 +188,7 @@ void print_bf_code_until_code_ptr()
 
 void print_bf_data()
 {
-    for (int i = 0; i < 65536; ++i)
+    for (int i = 0; i < DATA_CAPACITY; ++i)
         printf("%d\t", data_mem[i]);
 
     cout << "\n\n";
