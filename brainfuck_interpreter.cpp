@@ -119,7 +119,7 @@ void parse_bf_code()
             --*data_ptr;
             break;
         case '[':
-            if(!*data_ptr) {
+            if (!*data_ptr) {
                 int find = 0, cnt = 0;
                 char *walk = code_ptr + 1;
                 while (*walk) {
