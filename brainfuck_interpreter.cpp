@@ -135,7 +135,7 @@ void parse_bf_code()
                     ++walk;
                 }
                 if (!find) {
-                    printf("Brainfuck failed due to asymmetric jumping bracket.\n\n");
+                    cout << "Brainfuck failed due to asymmetric jumping bracket.\n\n";
                     return;
                 }
             }
