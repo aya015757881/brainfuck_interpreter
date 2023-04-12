@@ -98,7 +98,7 @@ void parse_bf_code()
         switch (*code_ptr) {
         case '>':
             if (++data_ptr - data_mem >= DATA_CAPACITY) {
-                printf("Brainfuck out of its memory at %ld on symbol %c.\n\n", data_ptr - data_mem, *code_ptr);
+                printf("Program out of its memory at %ld on symbol %c.\n\n", data_ptr - data_mem, *code_ptr);
                 print_bf_code_until_code_ptr();
                 print_bf_data();
                 return;
@@ -106,7 +106,7 @@ void parse_bf_code()
             break;
         case '<':
             if (--data_ptr < data_mem) {
-                printf("Brainfuck out of its memory at %ld on symbol %c.\n\n", data_ptr - data_mem, *code_ptr);
+                printf("Program out of its memory at %ld on symbol %c.\n\n", data_ptr - data_mem, *code_ptr);
                 print_bf_code_until_code_ptr();
                 print_bf_data();
                 return;
@@ -141,7 +141,7 @@ void parse_bf_code()
                     ++walk;
                 }
                 if (!find) {
-                    cout << "Brainfuck failed due to asymmetric jumping bracket.\n\n";
+                    cout << "Program failed due to asymmetric jumping bracket.\n\n";
                     return;
                 }
             }
@@ -163,13 +163,13 @@ void parse_bf_code()
                 --walk;
             }
             if (!find) {
-                cout << "Brainfuck failed due to asymmetric jumping bracket.\n\n";
+                cout << "Program failed due to asymmetric jumping bracket.\n\n";
                 return;
             }
             break;
         }
         default:
-            cout << "Brainfuck failed due to unrecognized code symbol.\n\n";
+            cout << "Program failed due to unrecognized code symbol.\n\n";
             return;
         }
         ++code_ptr;
